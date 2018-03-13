@@ -153,6 +153,8 @@ public class GerritConfigurationImpl implements GerritConfiguration {
 
     @Override
     public List<String> getIdsOfKnownGerritProjects() {
+        // This code generates a lint warning "unchecked cast".
+        // An Object is returned and it cannot be cast directly into a list.
         List<String> idsOfKnownGerritProjects = (List) settings.get(FIELD_KNOWN_GERRIT_PROJECTS);
         return idsOfKnownGerritProjects != null ? idsOfKnownGerritProjects : Lists.newArrayList();
     }

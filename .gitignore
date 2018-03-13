@@ -1,9 +1,13 @@
 work/
 target/
 bin/
+*.orig
+*.patch
 
 #IDE specific files
+.settings
 .project
 .classpath
 .idea
 *.iml
+.vscode/

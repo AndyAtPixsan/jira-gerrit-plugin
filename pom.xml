@@ -1,4 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><!--
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
     Copyright 2012 MeetMe, Inc.
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,18 +15,17 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.meetme.plugins.jira</groupId>
     <artifactId>gerrit-plugin</artifactId>
     <version>3.5-SNAPSHOT</version>
-
     <organization>
         <name>MeetMe, Inc.</name>
         <url>http://www.meetme.com/</url>
     </organization>
-
     <name>JIRA Gerrit Plugin</name>
     <description>Integrates Atlassian JIRA with Gerrit code review.</description>
     <issueManagement>
@@ -32,9 +33,7 @@
         <url>https://github.com/MeetMe/jira-gerrit-plugin/issues</url>
     </issueManagement>
     <inceptionYear>2012</inceptionYear>
-
     <packaging>atlassian-plugin</packaging>
-
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -43,7 +42,6 @@
             <comments>A business-friendly OSS license</comments>
         </license>
     </licenses>
-
     <developers>
         <developer>
             <id>jhansche</id>
@@ -58,7 +56,6 @@
             <timezone>-4</timezone>
         </developer>
     </developers>
-
     <dependencies>
         <!-- Base Atlassian requirements -->
         <dependency>
@@ -69,12 +66,14 @@
         </dependency>
         <!-- Add dependency on jira-core if you want access to JIRA implementation classes as well as the sanctioned API. -->
         <!-- This is not normally recommended, but may be required eg when migrating a plugin originally developed against JIRA 4.x -->
-        <!-- <dependency>
+        <!--
+        <dependency>
             <groupId>com.atlassian.jira</groupId>
             <artifactId>jira-core</artifactId>
             <version>${jira.version}</version>
             <scope>provided</scope>
-            </dependency> -->
+        </dependency>
+        -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -99,14 +98,12 @@
             <version>1.9.5</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>com.atlassian.plugin</groupId>
             <artifactId>atlassian-spring-scanner-annotation</artifactId>
             <version>${atlassian.spring.scanner.version}</version>
             <scope>compile</scope>
         </dependency>
-
         <!-- Project Atlassian requirements -->
         <dependency>
             <groupId>com.atlassian.sal</groupId>
@@ -151,7 +148,6 @@
             <version>2.2.12</version>
             <scope>provided</scope>
         </dependency>
-
         <!-- Project dependencies -->
         <dependency>
             <!-- Using this for gerrit integration -->
@@ -190,7 +186,6 @@
                     <productDataVersion>${jira.version}</productDataVersion>
                     <log4jProperties>src/aps/resources/log4j.properties</log4jProperties>
                     <enableFastdev>false</enableFastdev>
-
                     <pluginArtifacts>
                         <pluginArtifact>
                             <groupId>com.atlassian.labs.plugins</groupId>
@@ -198,20 +193,12 @@
                             <version>${quick.reload.version}</version>
                         </pluginArtifact>
                     </pluginArtifacts>
-
                     <products>
                         <product>
                             <id>jira</id>
                             <version>${jira.version}</version>
                         </product>
                     </products>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -251,31 +238,35 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.7.0</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                    <compilerArgs>
+                        <arg>-Xlint</arg>
+                     </compilerArgs>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
     <properties>
-        <jira.version>7.2.0</jira.version>
-        <amps.version>6.2.6</amps.version>
+        <jira.version>7.6.1</jira.version>
+        <amps.version>6.3.14</amps.version>
         <plugin.testrunner.version>1.2.3</plugin.testrunner.version>
         <atlassian.spring.scanner.version>1.2.13</atlassian.spring.scanner.version>
+        <!-- This key is used to keep the consistency between the key in atlassian-plugin.xml and the key to generate bundle. -->
         <atlassian.plugin.key>${project.groupId}.${project.artifactId}</atlassian.plugin.key>
         <testkit.version>6.3.11</testkit.version>
         <quick.reload.version>1.30.5</quick.reload.version>
-
         <jira.test.version>7.2.0</jira.test.version>
         <jira.data.version>7.2.0</jira.data.version>
         <jira.rest.version>3.0.8</jira.rest.version>
         <atlas.template.version>3.0.0</atlas.template.version>
         <atlas.concurrent.version>3.0.0</atlas.concurrent.version>
         <atlas.sal.version>3.0.5</atlas.sal.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
     <profiles>
         <profile>
             <id>release</id>
@@ -285,7 +276,6 @@
             </properties>
         </profile>
     </profiles>
-
     <distributionManagement>
         <repository>
             <id>releases</id>
@@ -298,12 +288,10 @@
             <url>https://nexus.meetmecorp.com/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
-
     <scm>
         <connection>scm:git:git://github.com/MeetMe/jira-gerrit-plugin.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/MeetMe/jira-gerrit-plugin.git</developerConnection>
         <url>https://github.com/MeetMe/jira-gerrit-plugin</url>
         <tag>HEAD</tag>
     </scm>
-
 </project>
